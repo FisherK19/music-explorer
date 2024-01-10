@@ -1,1 +1,1 @@
-# music-explorer
+# 🎶🔥 Music Finder 🔥🎶
