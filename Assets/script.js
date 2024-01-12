@@ -45,15 +45,5 @@ document.addEventListener("DOMContentLoaded", function () {
             resultElement.innerHTML = `<a href="${url}" target="_blank">${title} by ${artist}</a>`;
             lyricsResultsSection.appendChild(resultElement);
         });
-
-        results.forEach(result => {
-            const title = result.result.title;
-            const artist = result.result.primary_artist.name;
-            const url = result.result.url;
-
-            const resultElement = document.createElement("p");
-            resultElement.innerHTML = `<a href="${url}" target="_blank">${title} by ${artist}</a>`;
-            lyricsResultsSection.appendChild(resultElement);
-        });
     }
 });
