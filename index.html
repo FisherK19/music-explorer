@@ -1,43 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Music Lyrics and Live Finder</title>
-         <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-         <link rel="stylesheet" href="./Assets/styles.css">
-        </head>
-<body>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./Assets/styles.css" />
+  </head>
+  <body>
     <header>
-        <h1 id="nav">Music Finder</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Lyrics Search</a></li>
-                <li><a href="#">Live Music Finder</a></li>
-            </ul>
-        </nav>
+      <h1 id="nav">Music Finder</h1>
+      <nav>
+        <ul>
+          <li><a href="#">Lyrics Search</a></li>
+          <li>|</li>
+          <li><a href="#">Live Music Finder</a></li>
+        </ul>
+      </nav>
     </header>
-     <section id="search-area">
-        <h2>Find Lyrics and Live Music Events</h2>
+    <main>
+      <section>
+        <h2>Find Songs</h2>
         <form id="search-form">
-            <input type="text" placeholder="Search Lyrics" id="lyrics-search">
-            <input type="text" placeholder="Search Live Music" id="live-search">
-            <button type="submit">Search</button>
+          <input type="text" placeholder="Enter Lyrics" id="lyrics-search" />
+          <button type="submit">Search</button>
         </form>
-    </section>
-     <main>
-        <section id="lyrics-results">
-            <h3>Lyrics Results</h3>
-              </section>
-        <section id="live-results">
-            <h3>Live Music Results</h3>
-                 </section>
+      </section>
+
+      <section id="lyrics-results">
+        <h2>Lyrics Results</h2>
+      </section>
+      <br><br><br><br>
+
+      <h2>Find Live Events</h2>
+      <form id="search-form">
+        <input type="text" placeholder="Enter Artist" id="live-search" />
+        <button type="submit">Search</button>
+      </form>
+
+      <section id="live-results">
+        <h3>Live Music Results</h3>
+      </section>
+
     </main>
     <script src="./Assets/script.js"></script>
     <footer>
-        <p>&copy; 2024 Music Finder</p>
-
+      <p>&copy; 2024 Music Finder</p>
     </footer>
-</body>
+  </body>
 </html>
