@@ -1,96 +1,48 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const searchForm = document.getElementById('search-form');
-    const lyricsSearch = document.getElementById('lyrics-search');
-    const liveSearch = document.getElementById('live-search');
-    const lyricsResults = document.getElementById('lyrics-results');
-    const liveResults = document.getElementById('live-results');
-    const geniusApiKey = '9xRbA32eXhmEx1y8PiT6ilBROAS6qe-6ymKJmCetD5KRXKtXYcngRt8uJh0k3C1O';
+document.addEventListener("DOMContentLoaded", function () {
+    const lyricsSearchForm = document.getElementById("search-form");
+    const lyricsResultsSection = document.getElementById("lyrics-results");
 
-    searchForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const lyricsQuery = lyricsSearch.value;
-        const liveQuery = liveSearch.value;
+    lyricsSearchForm.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-        if (lyricsQuery) {
-            searchLyrics(lyricsQuery);
-        }
+        const lyricsInput = document.getElementById("lyrics-search").value;
+        searchLyrics(lyricsInput);
+    });
 
-        if (liveQuery) {
-            searchLiveMusic(liveQuery);
+    document.getElementById("lyrics-results").addEventListener("click", function () {
+        const lyricsInput = document.getElementById("lyrics-search").value;
+
+        if (lyricsInput.trim() !== "") {
+            searchLyrics(lyricsInput);
         }
     });
 
-    function searchLyrics(lyricsQuery) {
-        const apiUrl = `https://api.genius.com/search?q=${encodeURIComponent(lyricsQuery)}&access_token=${geniusApiKey}`;
+    function searchLyrics(lyrics) {
+        const apiKey = '9xRbA32eXhmEx1y8PiT6ilBROAS6qe-6ymKJmCetD5KRXKtXYcngRt8uJh0k3C1O';
+        const apiUrl = `https://api.genius.com/search?q=${encodeURIComponent(lyrics)}&access_token=${apiKey}`;
 
         fetch(apiUrl)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log("Lyrics API response:", data);
-
-                if (data.response && data.response.hits && data.response.hits.length > 0) {
-                    displayLyricsResults(data.response.hits.slice(0, 5));
-                } else {
-                    displayError('No lyrics results found.');
-                }
-            })
-            .catch(error => {
-                displayError(`Error fetching lyrics data: ${error.message}`);
-                console.error("Lyrics API error:", error);
-            });
+            .then(response => response.json())
+            .then(data => displayLyricsResults(data.response.hits))
+            .catch(error => console.error("Error fetching lyrics:", error));
     }
 
     function displayLyricsResults(results) {
-        lyricsResults.innerHTML = '';
+        lyricsResultsSection.innerHTML = "<h3>Lyrics Results</h3>";
 
-        results.forEach(hit => {
-            const resultItem = document.createElement('div');
-            resultItem.textContent = hit.result.full_title;
-            lyricsResults.appendChild(resultItem);
-        });
-    }
-
-    function searchLiveMusic(liveQuery) {
-        const apiUrl = `https://api.example.com/search-live?q=${encodeURIComponent(liveQuery)}`;
-    
-        fetch(apiUrl)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log("Live music API response:", data); 
-    
-                if (data.results && data.results.length > 0) {
-                    displayLiveResults(data.results.slice(0, 5));
-                } else {
-                    displayError('No live music results found.');
-                }
-            })
-            .catch(error => {
-                displayError(`Error fetching live music data: ${error.message}`);
-                console.error("Live music API error:", error);
-            });
-    }
-    
-    function displayLiveResults(results) {
-        liveResults.innerHTML = '';
+        if (results.length === 0) {
+            lyricsResultsSection.innerHTML += "<p>No results found</p>";
+            return;
+        }
 
         results.forEach(result => {
-            const resultItem = document.createElement('div');
-            resultItem.textContent = result.title;
-            liveResults.appendChild(resultItem);
-        });
-    }
+            const title = result.result.title;
+            const artist = result.result.primary_artist.name;
+            const url = result.result.url;
 
-    function displayError(message) {
-        console.error(message);
+            const resultElement = document.createElement("p");
+            resultElement.innerHTML = `<a href="${url}" target="_blank">${title} by ${artist}</a>`;
+            lyricsResultsSection.appendChild(resultElement);
+        });
     }
 });
