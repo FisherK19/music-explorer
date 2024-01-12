@@ -52,6 +52,13 @@ nav ul li a {
     margin: 5px;
 }
 
+.lyrics-result-item {
+    background-color: #e0e0e0;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
 main {
     margin: 15px;
     padding: 20px;

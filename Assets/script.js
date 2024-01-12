@@ -41,6 +41,17 @@ document.addEventListener("DOMContentLoaded", function () {
             const url = result.result.url;
 
             const resultElement = document.createElement("p");
+            resultElement.classList.add("lyrics-result-item");
+            resultElement.innerHTML = `<a href="${url}" target="_blank">${title} by ${artist}</a>`;
+            lyricsResultsSection.appendChild(resultElement);
+        });
+
+        results.forEach(result => {
+            const title = result.result.title;
+            const artist = result.result.primary_artist.name;
+            const url = result.result.url;
+
+            const resultElement = document.createElement("p");
             resultElement.innerHTML = `<a href="${url}" target="_blank">${title} by ${artist}</a>`;
             lyricsResultsSection.appendChild(resultElement);
         });
