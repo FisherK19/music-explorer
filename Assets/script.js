@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     const lyricsSearchForm = document.getElementById("search-form");
     const lyricsResultsSection = document.getElementById("lyrics-results");
+    const liveSearchForm = document.getElementById("search-form-live");
+    const liveResultsSection = document.getElementById("live-results");
 
     lyricsSearchForm.addEventListener("submit", function (event) {
         event.preventDefault();
@@ -9,12 +11,11 @@ document.addEventListener("DOMContentLoaded", function () {
         searchLyrics(lyricsInput);
     });
 
-    document.getElementById("lyrics-results").addEventListener("click", function () {
-        const lyricsInput = document.getElementById("lyrics-search").value;
+    liveSearchForm.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-        if (lyricsInput.trim() !== "") {
-            searchLyrics(lyricsInput);
-        }
+        const artistInput = document.getElementById("live-search").value;
+        searchLiveEvents(artistInput);
     });
 
     function searchLyrics(lyrics) {
@@ -25,6 +26,16 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => displayLyricsResults(data.response.hits))
             .catch(error => console.error("Error fetching lyrics:", error));
+    }
+
+    function searchLiveEvents(artist) {
+        const apiKey = 'OUGxCGP7zcUXvIN0sDQpOzHAdlJLM2ID';
+        const apiUrl = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${apiKey}&keyword=${encodeURIComponent(artist)}`;
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => displayLiveResults(data._embedded.events))
+            .catch(error => console.error("Error fetching live events:", error));
     }
 
     function displayLyricsResults(results) {
@@ -44,6 +55,29 @@ document.addEventListener("DOMContentLoaded", function () {
             resultElement.classList.add("lyrics-result-item");
             resultElement.innerHTML = `<a href="${url}" target="_blank">${title} by ${artist}</a>`;
             lyricsResultsSection.appendChild(resultElement);
+        });
+    }
+
+    function displayLiveResults(events) {
+        liveResultsSection.innerHTML = "<h3>Live Music Results</h3>";
+    
+        if (events.length === 0) {
+            liveResultsSection.innerHTML += "<p>No live events found</p>";
+            return;
+        }
+    
+        events.forEach(event => {
+            const eventName = event.name;
+            const venueName = event._embedded.venues[0].name;
+            const eventDate = new Date(event.dates.start.dateTime).toLocaleDateString();
+            const eventTime = new Date(event.dates.start.dateTime).toLocaleTimeString();
+            const eventUrl = event.url;
+    
+            const resultElement = document.createElement("p");
+            resultElement.classList.add("live-result-item");
+            resultElement.style.backgroundColor = "#e0e0e0";
+            resultElement.innerHTML = `<strong><a href="${eventUrl}" target="_blank">${eventName}</a></strong> at ${venueName} on <a href="${eventUrl}" target="_blank">${eventDate} at ${eventTime}</a>`;
+            liveResultsSection.appendChild(resultElement);
         });
     }
 });
