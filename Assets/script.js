@@ -1,20 +1,85 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const searchForm = document.getElementById('search-form');
-    const lyricsSearch = document.getElementById('lyrics-search');
-    const liveSearch = document.getElementById('live-search');
-    const lyricsResults = document.getElementById('lyrics-results');
-    const liveResults = document.getElementById('live-results');
-})
-searchForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const lyricsQuery = lyricsSearch.value;
-    const liveQuery = liveSearch.value;
+document.addEventListener("DOMContentLoaded", function () {
+    const lyricsSearchForm = document.getElementById("search-form");
+    const lyricsResultsSection = document.getElementById("lyrics-results");
+    const liveSearchForm = document.getElementById("search-form-live");
+    const liveResultsSection = document.getElementById("live-results");
 
-    if (lyricsQuery) {
-        searchLyrics(lyricsQuery);
+    lyricsSearchForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const lyricsInput = document.getElementById("lyrics-search").value;
+        searchLyrics(lyricsInput);
+    });
+
+    liveSearchForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const artistInput = document.getElementById("live-search").value;
+        searchLiveEvents(artistInput);
+    });
+
+    function searchLyrics(lyrics) {
+        const apiKey = '9xRbA32eXhmEx1y8PiT6ilBROAS6qe-6ymKJmCetD5KRXKtXYcngRt8uJh0k3C1O';
+        const apiUrl = `https://api.genius.com/search?q=${encodeURIComponent(lyrics)}&access_token=${apiKey}`;
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => displayLyricsResults(data.response.hits))
+            .catch(error => console.error("Error fetching lyrics:", error));
     }
 
-    if (liveQuery) {
-        searchLiveMusic(liveQuery);
+    function searchLiveEvents(artist) {
+        const apiKey = 'OUGxCGP7zcUXvIN0sDQpOzHAdlJLM2ID';
+        const apiUrl = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${apiKey}&keyword=${encodeURIComponent(artist)}`;
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => displayLiveResults(data._embedded.events))
+            .catch(error => console.error("Error fetching live events:", error));
     }
+
+    function displayLyricsResults(results) {
+        lyricsResultsSection.innerHTML = "<h3>Lyrics Results</h3>";
+
+        if (results.length === 0) {
+            lyricsResultsSection.innerHTML += "<p>No results found</p>";
+            return;
+        }
+
+        results.forEach(result => {
+            const title = result.result.title;
+            const artist = result.result.primary_artist.name;
+            const url = result.result.url;
+
+            const resultElement = document.createElement("p");
+            resultElement.classList.add("lyrics-result-item");
+            resultElement.innerHTML = `<a href="${url}" target="_blank">${title} by ${artist}</a>`;
+            lyricsResultsSection.appendChild(resultElement);
+        });
+    }
+
+    function displayLiveResults(events) {
+        liveResultsSection.innerHTML = "<h3>Live Music Results</h3>";
+    
+        if (events.length === 0) {
+            liveResultsSection.innerHTML += "<p>No live events found</p>";
+            return;
+        }
+    
+        events.forEach(event => {
+            const eventName = event.name;
+            const venueName = event._embedded.venues[0].name;
+            const eventDate = new Date(event.dates.start.dateTime).toLocaleDateString();
+            const eventTime = new Date(event.dates.start.dateTime).toLocaleTimeString();
+            const eventUrl = event.url;
+    
+            const resultElement = document.createElement("p");
+            resultElement.classList.add("live-result-item");
+            resultElement.style.backgroundColor = "#e0e0e0"; 
+    
+            resultElement.innerHTML = `<strong><a href="${eventUrl}" target="_blank">${eventName}</a></strong> at ${venueName} on <a href="${eventUrl}" target="_blank">${eventDate} at ${eventTime}</a>`;
+            liveResultsSection.appendChild(resultElement);
+        });
+    }
+    
 });
