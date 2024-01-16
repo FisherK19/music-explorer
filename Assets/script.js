@@ -58,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const eventTime = new Date(event.dates.start.dateTime).toLocaleTimeString();
             const eventUrl = event.url;
             const resultElement = document.createElement("p");
+            resultElement.style.backgroundColor = "#E0E0E0";
             resultElement.innerHTML = `<strong><a href="${eventUrl}" target="_blank">${eventName}</a></strong> at ${venueName} on <a href="${eventUrl}" target="_blank">${eventDate} at ${eventTime}</a>`;
             liveResultsSection.appendChild(resultElement);
         });
