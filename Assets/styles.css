@@ -20,51 +20,113 @@ body {
 /* TEST */
 
 header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background: #333;
     color: white;
     padding: 10px 0;
     width: 100%;
-    box-sizing: border-box;
-}
-
-nav {
+  }
+  
+  .header-logo {
+    max-height: 100px; 
+    width: auto; 
+  }
+  
+  .header-nav nav {
+    width: 100%; 
     text-align: center;
-}
-
-nav ul {
+  }
+  
+  .header-nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: inline-block;
-}
-
-nav ul li {
+  }
+  
+  .header-nav li {
     display: inline;
     margin: 0 10px;
-
-}
-
-nav ul li a {
+  }
+  
+  .header-nav a {
     color: white;
     text-decoration: none;
+  }
+
+  h2 {
+    font-size: 1.5em; 
+    font-weight: bold; 
+    margin-bottom: 0.5em; 
+    text-align: center; 
 }
 
+h2 {
+    color: #f2efef; 
+}
+
+h2 {
+    text-shadow: 2px 2px 4px rgb(22, 21, 21); 
+}
+
+h2 {
+    background-color: rgba(75, 70, 70, 0.7);
+    display: inline-block;
+    padding: 10px 20px; 
+    border-radius: 8px; 
+}
+
+h2 {
+    margin-top: 1em; 
+    margin-bottom: 1em; 
+}
+
+input[type="text"] {
+    width: 50%;
+    padding: 8px 10px; 
+    font-size: 1em;
+}
+
+input[type="text"]::placeholder {
+    font-style: italic;
+    color: #888; 
+}
+
+button {
+    background-color: #3d464d; 
+    color: white; 
+    border: none; 
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+
+button:hover {
+    background-color: #8d99bb;
+}
 #search-area {
 
     padding: 20px;
     margin: 5px;
 }
 
-.lyrics-result-item,
-.live-result-item {
-    background-color: #ccb4cf;
-    padding: 10px;
-    margin: 10px auto;
-    border-radius: 5px;
-    width: 80%;
-    max-width: 600px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+#lyrics-results {
+    width: 70%;
+    margin: 0 auto;
+    padding: 20px;
+    font-size: 0.9em;
 }
+
+#live-results {
+    width: 70%;
+    margin: 0 auto;
+    padding: 20px;
+    font-size: 0.9em;
+}
+
 
 .results-container {
     display: grid;
@@ -73,10 +135,6 @@ nav ul li a {
     padding: 10px;
 }
 
-.lyrics-result-item,
-.live-result-item {
-    margin-top: 0;
-}
 
 main {
     margin: 15px;
@@ -99,3 +157,5 @@ footer {
         width: 95%;
     }
 }
+
+  
