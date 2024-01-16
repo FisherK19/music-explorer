@@ -12,7 +12,6 @@ body {
     background-attachment: fixed;
     font-family: Arial, sans-serif;
     margin: 0;
-    background-color: #f0f0f0;
     color: #333;
 }
 
@@ -35,7 +34,6 @@ header {
   
   .header-nav nav {
     width: 100%; 
-    text-align: center;
   }
   
   .header-nav ul {
@@ -59,7 +57,6 @@ header {
     font-size: 1.5em; 
     font-weight: bold; 
     margin-bottom: 0.5em; 
-    text-align: center; 
     color: #f2efef; 
     text-shadow: 2px 2px 4px rgb(22, 21, 21); 
     background-color: rgba(75, 70, 70, 0.7);
@@ -135,14 +132,6 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-}
-
-@media screen and (max-width: 600px) {
-
-    .lyrics-result-item,
-    .live-result-item {
-        width: 95%;
-    }
 }
 
   
