@@ -6,7 +6,6 @@ body {
     background-image: url('https://png.pngtree.com/png-clipart/20221006/original/pngtree-music-notes-png-image_8660757.png');
     background-size: cover;
 
-    background-size: cover;
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
@@ -61,24 +60,12 @@ header {
     font-weight: bold; 
     margin-bottom: 0.5em; 
     text-align: center; 
-}
-
-h2 {
     color: #f2efef; 
-}
-
-h2 {
     text-shadow: 2px 2px 4px rgb(22, 21, 21); 
-}
-
-h2 {
     background-color: rgba(75, 70, 70, 0.7);
     display: inline-block;
     padding: 10px 20px; 
     border-radius: 8px; 
-}
-
-h2 {
     margin-top: 1em; 
     margin-bottom: 1em; 
 }
