@@ -8,10 +8,16 @@ document.addEventListener("DOMContentLoaded", function () {
         const lyricsInput = document.getElementById("lyrics-search").value;
         searchLyrics(lyricsInput);
     });
+    lyricsSearchForm.addEventListener("reset", function () {
+        lyricsResultsSection.innerHTML = '';
+    });
     liveSearchForm.addEventListener("submit", function (event) {
         event.preventDefault();
         const artistInput = document.getElementById("live-search").value;
         searchLiveEvents(artistInput);
+    });
+    liveSearchForm.addEventListener("reset", function () {
+        liveResultsSection.innerHTML = '';
     });
     function searchLyrics(lyrics) {
         const apiKey = '9xRbA32eXhmEx1y8PiT6ilBROAS6qe-6ymKJmCetD5KRXKtXYcngRt8uJh0k3C1O';
