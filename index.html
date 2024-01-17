@@ -1,68 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Music Lyrics and Live Finder</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="./Assets/styles.css" />
-  </head>
-  <body>
+</head>
+
+<body>
     <!-- Music finder logo, nav list-->
     <header>
-      <div class="header-top">
-        <img src="./Assets/image.png" alt="Logo of Music Finder" class="header-logo" />
-      </div>
-      <div class="header-nav">
-        <nav>
-          <ul>
-            <li><a href="#lyrics-search">Lyrics Search</a></li>
-            <li>|</li>
-            <li><a href="#live-search">Live Music Finder</a></li>
-          </ul>
-        </nav>
-      </div>
+        <div class="header-top">
+            <img src="./Assets/image.png" alt="Logo of Music Finder" class="header-logo" />
+        </div>
+        <div class="header-nav">
+            <nav>
+                <ul>
+                    <li><a href="#lyrics-search">Lyrics Search</a></li>
+                    <li>|</li>
+                    <li><a href="#live-search">Live Music Finder</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     <!-- Find songs, search and reset button-->
     <main>
-      <section>
-        <h3>Find Songs</h3>
-        <form id="search-form">
-          <input type="text" placeholder="Enter Lyrics" id="lyrics-search" />
-          <button type="submit">Search</button>
-          <button type="reset">Clear Search</button>
+        <section>
+            <h3>Find Songs</h3>
+            <form id="search-form">
+                <input type="text" placeholder="Enter Lyrics" id="lyrics-search" />
+                <button type="submit">Search</button>
+                <button type="reset">Clear Search</button>
+            </form>
+        </section>
+        <!-- Lyrics- results ID-->
+        <section id="lyrics-results">
+            <h3>Lyrics Results</h3>
+        </section>
+        <br><br><br><br>
+        <!-- Find live Events, search and reset button-->
+        <h3>Find Live Events</h3>
+        <form id="search-form-live">
+            <input type="text" placeholder="Enter Artist" id="live-search" />
+            <button type="submit">Search</button>
+            <button type="reset">Clear Search</button>
         </form>
-      </section>
-      <!-- Lyrics- results ID-->
-      <section id="lyrics-results">
-        <h3>Lyrics Results</h3>
-      </section>
-      <br><br><br><br>
-     <!-- Find live Events, search and reset button-->
-      <h3>Find Live Events</h3>
-      <form id="search-form-live">
-        <input type="text" placeholder="Enter Artist" id="live-search" />
-        <button type="submit">Search</button>
-        <button type="reset">Clear Search</button>
-    </form>
-    
-    <!-- Live Events Results Section -->
-    <section id="live-results">
-        <h3>Live Music Results</h3>
-    </section>
-  <br>
-  <br>
-  <br>
-  <br>
 
-  <!-- Javascript link-->
+        <!-- Live Events Results Section -->
+        <section id="live-results">
+            <h3>Live Music Results</h3>
+        </section>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <!-- Javascript link-->
     </main>
     <script src="./Assets/script.js"></script>
     <footer>
-      <p>&copy; 2024 Music Finder</p>
+        <p>&copy; 2024 Music Finder</p>
     </footer>
-  </body>
+</body>
+
 </html>
