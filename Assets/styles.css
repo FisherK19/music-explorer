@@ -102,8 +102,6 @@ button:hover {
     padding: 20px;
     font-size: 0.9em;
     display: grid;
-    grid-row-start: 4/4;
-    grid-row-end: 1/4;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 10px;
     padding: 10px;
@@ -115,8 +113,6 @@ button:hover {
     padding: 20px;
     font-size: 0.9em;
     display: grid;
-    grid-row-start: 4/4;
-    grid-row-end: 1/4;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 10px;
     padding: 10px;
