@@ -21,7 +21,8 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: transparent;
+    backdrop-filter: blur(4px);
+    /* background: transparent; */
     color: white;
     padding: 10px 0;
     width: 100%;
