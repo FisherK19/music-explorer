@@ -159,7 +159,7 @@ main {
 }
 
 footer {
-    background: #333;
+    backdrop-filter: (10px);
     color: white;
     padding: 10px 0;
     position: fixed;
