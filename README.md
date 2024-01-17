@@ -18,3 +18,20 @@ WHEN I type the artist's name into the Live Event Search
 THEN I am presented with a list of upcoming shows for that artist
 WHEN I click on the the show I am interested in
 THEN I am taken to the TicketMaster website where I can shop and purchase tickets
+
+
+Technologies used during this project:
+
+    HTML
+    Java Script
+    CSS
+    Tailwind.css
+    Google
+    W3 Schools
+    Slack
+    Zoom
+    Chatgpt
+    UTube
+
+
+![Alt text](image.png)
