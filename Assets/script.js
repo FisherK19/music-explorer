@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
             resultElement.classList.add("lyrics-result-item");
             resultElement.style.backgroundColor = "rgba(224, 224, 224, 0.7)";
             resultElement.style.padding = "10px 20px";
-            resultElement.style.borderRadius = "8px";
+            resultElement.style.borderRadius = "80px";
             resultElement.innerHTML = `<strong><a href="${url}" target="_blank">${title} by ${artist}</a></strong>`;
             lyricsResultsSection.appendChild(resultElement);
         });
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
             resultElement.classList.add("live-result-item");
             resultElement.style.backgroundColor = "rgba(224, 224, 224, 0.7)";
             resultElement.style.padding = "10px 20px";
-            resultElement.style.borderRadius = "8px";
+            resultElement.style.borderRadius = "80px";
             resultElement.innerHTML = `<strong><a href="${eventUrl}" target="_blank">${eventName}</a></strong> at ${venueName} on <a href="${eventUrl}" target="_blank">${eventDate} at ${eventTime}</a>`;
             liveResultsSection.appendChild(resultElement);
         });
