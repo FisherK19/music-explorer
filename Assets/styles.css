@@ -114,8 +114,6 @@ button:hover {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-<<<<<<< HEAD
-=======
 .search-form-live {
     background-color: #ccb4cf;
     padding: 10px;
@@ -126,12 +124,16 @@ button:hover {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
->>>>>>> e824bcfd0573f1a691092ecfe4d7ee51fcca230f
 .results-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 10px;
     padding: 10px;
+}
+
+.lyrics-result-item,
+.live-result-item {
+    margin-bottom: 10px;
 }
 
 
