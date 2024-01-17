@@ -45,12 +45,16 @@ document.addEventListener("DOMContentLoaded", function () {
             const title = result.result.title;
             const artist = result.result.primary_artist.name;
             const url = result.result.url;
-            const resultElement = document.createElement("p");
+            const resultElement = document.createElement("div");
             resultElement.classList.add("lyrics-result-item");
-            resultElement.innerHTML = `<a href="${url}" target="_blank">${title} by ${artist}</a>`;
+            resultElement.style.backgroundColor = "rgba(224, 224, 224, 0.7)";
+            resultElement.style.padding = "10px 20px";
+            resultElement.style.borderRadius = "8px";
+            resultElement.innerHTML = `<strong><a href="${url}" target="_blank">${title} by ${artist}</a></strong>`;
             lyricsResultsSection.appendChild(resultElement);
         });
     }
+    
     function displayLiveResults(events) {
         liveResultsSection.innerHTML = "<h3>Live Music Results</h3>";
         if (events.length === 0) {
@@ -63,10 +67,14 @@ document.addEventListener("DOMContentLoaded", function () {
             const eventDate = new Date(event.dates.start.dateTime).toLocaleDateString();
             const eventTime = new Date(event.dates.start.dateTime).toLocaleTimeString();
             const eventUrl = event.url;
-            const resultElement = document.createElement("p");
-            resultElement.style.backgroundColor = "#E0E0E0";
+            const resultElement = document.createElement("div");
+            resultElement.classList.add("live-result-item");
+            resultElement.style.backgroundColor = "rgba(224, 224, 224, 0.7)";
+            resultElement.style.padding = "10px 20px";
+            resultElement.style.borderRadius = "8px";
             resultElement.innerHTML = `<strong><a href="${eventUrl}" target="_blank">${eventName}</a></strong> at ${venueName} on <a href="${eventUrl}" target="_blank">${eventDate} at ${eventTime}</a>`;
             liveResultsSection.appendChild(resultElement);
         });
     }
+    
 });
