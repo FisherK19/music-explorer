@@ -1,3 +1,4 @@
+/* const search-form, lyric results, search-form-live, live results */
 document.addEventListener("DOMContentLoaded", function () {
     const lyricsSearchForm = document.getElementById("search-form");
     const lyricsResultsSection = document.getElementById("lyrics-results");
@@ -8,6 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const lyricsInput = document.getElementById("lyrics-search").value;
         searchLyrics(lyricsInput);
     });
+    
+    /* submit and reset functions */
     lyricsSearchForm.addEventListener("reset", function () {
         lyricsResultsSection.innerHTML = '';
     });
@@ -19,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     liveSearchForm.addEventListener("reset", function () {
         liveResultsSection.innerHTML = '';
     });
+    /* API Key for genius */
     function searchLyrics(lyrics) {
         const apiKey = '9xRbA32eXhmEx1y8PiT6ilBROAS6qe-6ymKJmCetD5KRXKtXYcngRt8uJh0k3C1O';
         const apiUrl = `https://api.genius.com/search?q=${encodeURIComponent(lyrics)}&access_token=${apiKey}`;
@@ -27,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => displayLyricsResults(data.response.hits))
             .catch(error => console.error("Error fetching lyrics:", error));
     }
+    /* API Key for ticketmaster */
     function searchLiveEvents(artist) {
         const apiKey = 'OUGxCGP7zcUXvIN0sDQpOzHAdlJLM2ID';
         const apiUrl = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${apiKey}&keyword=${encodeURIComponent(artist)}`;
@@ -35,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => displayLiveResults(data._embedded.events))
             .catch(error => console.error("Error fetching live events:", error));
     }
+    /* display lyric results fucntions */
     function displayLyricsResults(results) {
         lyricsResultsSection.innerHTML = "<h3>Lyrics Results</h3>";
         if (results.length === 0) {
@@ -54,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
             lyricsResultsSection.appendChild(resultElement);
         });
     }
-    
+    /* display live results functions */
     function displayLiveResults(events) {
         liveResultsSection.innerHTML = "<h3>Live Music Results</h3>";
         if (events.length === 0) {
