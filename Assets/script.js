@@ -4,12 +4,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const lyricsResultsSection = document.getElementById("lyrics-results");
     const liveSearchForm = document.getElementById("search-form-live");
     const liveResultsSection = document.getElementById("live-results");
+    /* Local storage */
+    const storedLyricsResults = localStorage.getItem('lyricsResults');
+    if (storedLyricsResults) {
+        displayLyricsResults(JSON.parse(storedLyricsResults));
+    }
     lyricsSearchForm.addEventListener("submit", function (event) {
         event.preventDefault();
         const lyricsInput = document.getElementById("lyrics-search").value;
         searchLyrics(lyricsInput);
     });
-    
+
     /* submit and reset functions */
     lyricsSearchForm.addEventListener("reset", function () {
         lyricsResultsSection.innerHTML = '';
@@ -46,7 +51,12 @@ document.addEventListener("DOMContentLoaded", function () {
         if (results.length === 0) {
             lyricsResultsSection.innerHTML += "<p>No results found</p>";
             return;
+            
         }
+        /* local storage */
+        localStorage.setItem('lyricsResults', JSON.stringify(results));
+console.log('Saved to local storage:', results);
+
         results.forEach(result => {
             const title = result.result.title;
             const artist = result.result.primary_artist.name;
