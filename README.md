@@ -35,3 +35,5 @@ Technologies used during this project:
 
 
 ![Alt text](image.png)
+
+Created By: Hunter Hurst, Katelynn McManus, Kristie Fisher, Sara Thompson
