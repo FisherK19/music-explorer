@@ -20,8 +20,8 @@ WHEN I click on the the show I am interested in
 THEN I am taken to the TicketMaster website where I can shop and purchase tickets
 
 ## Usages
-https://fisherk19.github.io/music-explorer/
-https://github.com/FisherK19/music-explorer
+[Official Site](https://fisherk19.github.io/music-explorer/)
+[Repo](https://github.com/FisherK19/music-explorer)
 
 Technologies used during this project:
 
