@@ -31,7 +31,7 @@ Technologies used during this project:
     Slack
     Zoom
     Chatgpt
-    UTube
+    YouTube
 
 
 ![Alt text](image.png)
