@@ -157,12 +157,10 @@ main {
     margin: 15px;
     padding: 20px;
 }
-
+/* footer styling and positioning */
 footer {
-    backdrop-filter: (10px);
-    color: white;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    backdrop-filter: blur(4px);
 }
