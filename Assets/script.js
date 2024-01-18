@@ -9,11 +9,17 @@ document.addEventListener("DOMContentLoaded", function () {
     if (storedLyricsResults) {
         displayLyricsResults(JSON.parse(storedLyricsResults));
     }
+    
     lyricsSearchForm.addEventListener("submit", function (event) {
         event.preventDefault();
         const lyricsInput = document.getElementById("lyrics-search").value;
         searchLyrics(lyricsInput);
     });
+
+    const storedLiveResults = localStorage.getItem('liveResults');
+    if (storedLiveResults) {
+        displayLiveResults(JSON.parse(storedLiveResults));
+    }
 
     /* submit and reset functions */
     lyricsSearchForm.addEventListener("reset", function () {
@@ -53,9 +59,11 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
             
         }
-        /* local storage */
+        /* local storage for lyrics results */
         localStorage.setItem('lyricsResults', JSON.stringify(results));
 console.log('Saved to local storage:', results);
+
+
 
         results.forEach(result => {
             const title = result.result.title;
@@ -71,12 +79,15 @@ console.log('Saved to local storage:', results);
         });
     }
     /* display live results functions */
-    function displayLiveResults(events) {
+     function displayLiveResults(events) {
         liveResultsSection.innerHTML = "<h3>Live Music Results</h3>";
         if (events.length === 0) {
             liveResultsSection.innerHTML += "<p>No live events found</p>";
             return;
         }
+      /* localstorage for live results */
+        localStorage.setItem('liveResults', JSON.stringify(events));
+
         events.forEach(event => {
             const eventName = event.name;
             const venueName = event._embedded.venues[0].name;
